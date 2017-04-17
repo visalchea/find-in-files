@@ -109,19 +109,22 @@ namespace Find_in_Files
             var sFile = Path.Combine(LvwResult.SelectedItems[0].SubItems[1].Text, LvwResult.SelectedItems[0].Text);
 
             // Open file and hightlight
-            var lang = FastColoredTextBoxNS.Language.Custom;
+            var lang = Language.Custom;
             var ext = Path.GetExtension(sFile).ToLower();
             switch (ext)
             {
+                case ".sql":
+                    lang = Language.SQL;
+                    break;
                 case ".xml":
                 case ".jrxml":
-                    lang = FastColoredTextBoxNS.Language.XML;
+                    lang = Language.XML;
                     break;
                 case ".php":
-                    lang = FastColoredTextBoxNS.Language.PHP;
+                    lang = Language.PHP;
                     break;
                 default:
-                    lang = FastColoredTextBoxNS.Language.Custom;
+                    lang = Language.Custom;
                     break;
             }
             TxtFile.Language = lang;
